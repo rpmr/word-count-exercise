@@ -4,13 +4,16 @@ import cats.Functor
 import cats.syntax.either._
 import cats.syntax.functor._
 import io.circe.generic.semiauto.{deriveDecoder, deriveEncoder}
-import io.circe.{Decoder, Encoder}
+import io.circe.{Decoder, Encoder, Printer}
 import mpurins.coralogix.wordcount.services.WordCountService
 import sttp.tapir._
-import sttp.tapir.json.circe._
+import sttp.tapir.json.circe.TapirJsonCirce
 import sttp.tapir.server.ServerEndpoint
 
-object WordCountEndpoint {
+object WordCountEndpoint extends TapirJsonCirce {
+
+  override val jsonPrinter: Printer = Printer.spaces2
+
   final case class Response(data: List[WordsByEvent])
   private object Response {
     implicit val encoder: Encoder[Response] = deriveEncoder

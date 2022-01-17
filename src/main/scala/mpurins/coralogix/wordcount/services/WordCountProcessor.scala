@@ -45,7 +45,7 @@ object WordCountProcessor {
             .fold(window.some)(_ => none)
       }
       .unNone
-      .through(StdOutSink(Printer.noSpaces))
+      .through(StdOutSink(Printer.spaces2))
       .compile
       .drain
       .background >> Resource.eval(logger.info("Event processing started"))
