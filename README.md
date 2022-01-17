@@ -18,6 +18,10 @@ If blackbox is located on remote machine you can use `ssh` and pipe results to l
 ```
 ssh user@remote-machine /path/to/on/remote/blackbox.amd64 | sbt run
 ```
+Viewing counts from window which is currently building
+```
+curl 127.0.0.1:8080/current
+```
 
 ## Configuration
 
