@@ -30,6 +30,24 @@ Following environment variables are supported to control behaviour of service
 - `HTTP_PORT` for port to listen
 - `WORD_COUNT_WINDOW_DURATION` for changing window duration
 
+Service can read input data from file or unix named pipe as well. For that you need to change `application.conf`
+```
+# Current value which instructs to read from stdin
+app {
+  ...
+  source = "stdin"
+  ...
+}
+# Change to following to read from file
+app {
+  ...
+  source = {
+    path = "/path/to/file/blackbox.log"
+  }
+  ...
+}
+```
+
 ## Tests
 
 Run following to run tests
